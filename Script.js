@@ -3,16 +3,23 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.getElementById('scene-container').appendChild(renderer.domElement);
 
-// Lighting
+// Ensure renderer is appended
+const container = document.getElementById('scene-container');
+if (!container) {
+    console.error('Scene container not found!');
+} else {
+    container.appendChild(renderer.domElement);
+}
+
+// Lighting (to see objects clearly)
 const ambientLight = new THREE.AmbientLight(0x404040);
 scene.add(ambientLight);
 const pointLight = new THREE.PointLight(0xffffff, 1, 100);
 pointLight.position.set(0, 0, 0);
 scene.add(pointLight);
 
-// Sun (Your Name)
+// Sun
 const sunGeometry = new THREE.SphereGeometry(5, 32, 32);
 const sunMaterial = new THREE.MeshBasicMaterial({ color: 0xffeb3b });
 const sun = new THREE.Mesh(sunGeometry, sunMaterial);
@@ -41,37 +48,23 @@ scene.add(saturn);
 const ringGeometry = new THREE.RingGeometry(2, 3, 32);
 const ringMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, side: THREE.DoubleSide });
 const rings = new THREE.Mesh(ringGeometry, ringMaterial);
-rings.rotation.x = Math.PI / 3; // Tilt the rings
-saturn.add(rings); // Attach rings to Saturn
+rings.rotation.x = Math.PI / 3;
+saturn.add(rings);
 
 // Camera Position
-camera.position.z = 20;
+camera.position.set(0, 10, 20); // Adjusted for better view
+camera.lookAt(0, 0, 0); // Point camera at the Sun
 
 // Orbit Parameters
 let earthAngle = 0, jupiterAngle = 0, saturnAngle = 0;
 const earthOrbitRadius = 10, jupiterOrbitRadius = 15, saturnOrbitRadius = 20;
 
-// Resume Details
+// Resume Details (replace with your info)
 const resumeDetails = {
-    education: `
-        <strong>Education</strong><br>
-        - B.S. in Computer Science, [Your University], [Year]<br>
-        - Relevant Courses: Data Structures, Algorithms, Web Development
-    `,
-    experience: `
-        <strong>Experience</strong><br>
-        - Software Engineer, [Company Name], [Dates]<br>
-            • Developed web apps with React and Node.js<br>
-        - Intern, [Another Company], [Dates]<br>
-            • Assisted in debugging and testing
-    `,
-    projects: `
-        <strong>Projects</strong><br>
-        - [Project Name 1]: A web app for [purpose], built with [tech stack]<br>
-        - [Project Name 2]: A [type] project using [tech stack]
-    `
+    education: '<strong>Education</strong><br>- B.S. in Computer Science, [Your University], [Year]',
+    experience: '<strong>Experience</strong><br>- Software Engineer, [Company], [Dates]',
+    projects: '<strong>Projects</strong><br>- [Project Name]: Built with [Tech]'
 };
-
 const infoBox = document.getElementById('info');
 
 // Raycaster for Clicking
@@ -101,16 +94,11 @@ function animate() {
     jupiter.position.set(Math.cos(jupiterAngle) * jupiterOrbitRadius, 0, Math.sin(jupiterAngle) * jupiterOrbitRadius);
     saturn.position.set(Math.cos(saturnAngle) * saturnOrbitRadius, 0, Math.sin(saturnAngle) * saturnOrbitRadius);
 
-    // Rotate Planets
-    earth.rotation.y += 0.01;
-    jupiter.rotation.y += 0.01;
-    saturn.rotation.y += 0.01;
-
     renderer.render(scene, camera);
 }
 animate();
 
-// Handle Window Resize
+// Handle Resize
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
