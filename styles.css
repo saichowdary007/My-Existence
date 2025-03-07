@@ -1,116 +1,25 @@
 body {
-    background: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
     overflow: hidden;
+    background: #000;
     font-family: Arial, sans-serif;
 }
 
-.solar-system {
-    position: relative;
-    width: 700px;
-    height: 700px;
-}
-
-.sun {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 120px;
-    height: 120px;
-    background: radial-gradient(circle, #ffeb3b, #ff9800);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 24px;
-    text-align: center;
-    text-shadow: 2px 2px 4px #000;
-}
-
-.orbit {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border: 1px dashed #fff;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: spin 20s linear infinite;
-}
-
-.orbit-earth {
-    width: 200px;
-    height: 200px;
-    animation-duration: 15s;
-}
-
-.orbit-jupiter {
-    width: 350px;
-    height: 350px;
-    animation-duration: 25s;
-}
-
-.orbit-saturn {
-    width: 500px;
-    height: 500px;
-    animation-duration: 30s;
-}
-
-.planet {
-    position: absolute;
-    border-radius: 50%;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    cursor: pointer;
-}
-
-.earth {
-    width: 40px;
-    height: 40px;
-    background: #2196f3; /* Blue for Earth */
-}
-
-.jupiter {
-    width: 60px;
-    height: 60px;
-    background: #ff5722; /* Orange for Jupiter */
-}
-
-.saturn {
-    width: 50px;
-    height: 50px;
-    background: #ffc107; /* Yellow for Saturn */
-}
-
-.rings {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 80px;
-    height: 20px;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    background: transparent;
-}
-
-@keyframes spin {
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
+#scene-container {
+    width: 100vw;
+    height: 100vh;
 }
 
 .info-box {
-    position: fixed;
+    position: absolute;
     bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     color: white;
     background: rgba(0, 0, 0, 0.8);
     padding: 15px;
     border-radius: 5px;
-    max-width: 500px;
+    max-width: 600px;
     text-align: left;
+    z-index: 10;
 }
