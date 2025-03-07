@@ -14,10 +14,24 @@
     <script>
         // Scene, Camera, Renderer
         const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x000000); // Fixes blank screen issue
+
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 0, 10); // Adjusted for better viewing
+
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
+
+        console.log("Renderer attached successfully!");
+
+        // Lighting Fix
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+
+        const pointLight = new THREE.PointLight(0xffffff, 2, 50);
+        pointLight.position.set(0, 0, 0);
+        scene.add(pointLight);
 
         // Sun (Sai Kumar P - Central)
         const sunGeometry = new THREE.SphereGeometry(2, 32, 32);
@@ -47,11 +61,6 @@
         saturnRings.rotation.x = Math.PI / 2;
         saturn.add(saturnRings);
 
-        // Lighting
-        const light = new THREE.PointLight(0xffffff, 2, 50);
-        light.position.set(0, 0, 0);
-        scene.add(light);
-
         // Animation
         function animate() {
             requestAnimationFrame(animate);
@@ -73,7 +82,6 @@
             renderer.render(scene, camera);
         }
 
-        camera.position.z = 15;
         animate();
     </script>
 </body>
