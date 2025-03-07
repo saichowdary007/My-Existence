@@ -3,23 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Your Name]'s Resume Portfolio</title>
+    <title>[Your Name]'s 3D Resume Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 </head>
 <body>
-    <div class="solar-system">
-        <div class="sun">[Your Name]</div>
-        <div class="orbit orbit-earth">
-            <div class="planet earth" id="education"></div>
-        </div>
-        <div class="orbit orbit-jupiter">
-            <div class="planet jupiter" id="experience"></div>
-        </div>
-        <div class="orbit orbit-saturn">
-            <div class="planet saturn" id="projects"></div>
-            <div class="rings"></div>
-        </div>
-    </div>
+    <div id="scene-container"></div>
     <div class="info-box" id="info">Click a planet to see details!</div>
     <script src="script.js"></script>
 </body>
