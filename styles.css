@@ -1,0 +1,79 @@
+body {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.solar-system {
+    position: relative;
+    width: 600px;
+    height: 600px;
+}
+
+.sun {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #ffeb3b, #ff9800);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    border: 1px dashed #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin 20s linear infinite;
+}
+
+.orbit-2 {
+    width: 300px;
+    height: 300px;
+    animation-duration: 25s;
+}
+
+.orbit-3 {
+    width: 400px;
+    height: 400px;
+    animation-duration: 30s;
+}
+
+.planet {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #2196f3;
+    border-radius: 50%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+#project1 { background: #4caf50; }
+#project2 { background: #f44336; }
+#project3 { background: #9c27b0; }
+
+@keyframes spin {
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.info-box {
+    position: fixed;
+    bottom: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+}
