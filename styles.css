@@ -6,54 +6,63 @@ body {
     height: 100vh;
     margin: 0;
     overflow: hidden;
+    font-family: Arial, sans-serif;
 }
 
 .solar-system {
     position: relative;
-    width: 600px;
-    height: 600px;
+    width: 700px;
+    height: 700px;
 }
 
 .sun {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     background: radial-gradient(circle, #ffeb3b, #ff9800);
     border-radius: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    text-shadow: 2px 2px 4px #000;
 }
 
 .orbit {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 200px;
-    height: 200px;
     border: 1px dashed #fff;
     border-radius: 50%;
     transform: translate(-50%, -50%);
     animation: spin 20s linear infinite;
 }
 
-.orbit-2 {
-    width: 300px;
-    height: 300px;
+.orbit-earth {
+    width: 200px;
+    height: 200px;
+    animation-duration: 15s;
+}
+
+.orbit-jupiter {
+    width: 350px;
+    height: 350px;
     animation-duration: 25s;
 }
 
-.orbit-3 {
-    width: 400px;
-    height: 400px;
+.orbit-saturn {
+    width: 500px;
+    height: 500px;
     animation-duration: 30s;
 }
 
 .planet {
     position: absolute;
-    width: 30px;
-    height: 30px;
-    background: #2196f3;
     border-radius: 50%;
     top: 0;
     left: 50%;
@@ -61,9 +70,35 @@ body {
     cursor: pointer;
 }
 
-#project1 { background: #4caf50; }
-#project2 { background: #f44336; }
-#project3 { background: #9c27b0; }
+.earth {
+    width: 40px;
+    height: 40px;
+    background: #2196f3; /* Blue for Earth */
+}
+
+.jupiter {
+    width: 60px;
+    height: 60px;
+    background: #ff5722; /* Orange for Jupiter */
+}
+
+.saturn {
+    width: 50px;
+    height: 50px;
+    background: #ffc107; /* Yellow for Saturn */
+}
+
+.rings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: transparent;
+}
 
 @keyframes spin {
     100% { transform: translate(-50%, -50%) rotate(360deg); }
@@ -74,6 +109,8 @@ body {
     bottom: 20px;
     color: white;
     background: rgba(0, 0, 0, 0.8);
-    padding: 10px;
+    padding: 15px;
     border-radius: 5px;
+    max-width: 500px;
+    text-align: left;
 }
